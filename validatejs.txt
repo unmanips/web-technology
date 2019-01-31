@@ -1,0 +1,68 @@
+function validate()
+{
+var firstname = formname.firstname.value;
+var lastname = formname.lastname.value;
+var uname=formname.uname.value;
+var pwd=formname.pwd.value;
+var cpwd=formname.cpwd.value;
+var email=formname.email.value;
+var mob=formname.mob.value;
+
+
+var flag = false;
+var str = "";
+var efil = /^([a-zA-Z0-9\_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+if(firstname.trim()==="")
+	{
+        flag = true;
+        str += "  Firstname should not be empty!!\n";
+   	 }
+    if(lastname.trim()==="")
+ 	   {
+        flag=true;
+        str += "  Lastname should not be empty!!\n";
+	}
+	
+	
+	
+	 var usr = /^([a-zA-Z0-9])+$/;
+    if(uname.trim()==="" || !usr.test(uname)){
+        flag=true;
+        str +="  Username should not be blank!!\n";
+    }
+    if(pwd.trim()===""&&cpwd.trim()===""||pwd!=cpwd){
+        flag=true;
+        str +="  Password is Blank or Does not Match!!\n";
+    }
+	
+	
+	if(formname.gender[0].checked==0&&formname.gender[1]==0)
+	
+	{
+	flag=true;
+	str+=" Gender not selected!!"
+	}
+	
+	if(!efil.test(email))
+	{
+	flag=true;
+	str+=" Not a valid email address!!"
+	
+	}
+	
+	
+    if(isNaN(mob)||mob.length<10){
+        flag = true;
+        str+="  Mobile Number is not valid!!\n";
+    }
+	
+	if(flag)
+	{
+        alert("WARNING!!!!!!\n"+str);
+        return false;
+        }
+    else{
+        return true;
+    }
+	}
